@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "oMDME4ROLkYrl4pPHm2RB3/gkK05YoOh8I0B4tZxqGE=",
+  "Source": "Fintor.api",
+  "BasePath": "_content/Fintor.api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
