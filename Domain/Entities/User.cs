@@ -17,5 +17,25 @@ namespace Domain.Entities
         public string? Provider { get; private set; }
         public string? ProviderId { get; private set; }
         public DateTime CreatedAt { get; private set; }
+        public User()
+        {
+
+        }
+
+        public User(string email, DateOnly dateOfBirth, string name, string lastName, string? provider, string? providerId)
+        {
+            Email = email;
+            DateOfBirth = dateOfBirth;
+            Name = name;
+            LastName = lastName;
+            Provider = provider;
+            ProviderId = providerId;
+            CreatedAt = DateTime.UtcNow;
+        }
+
+        public void SetPassword(string password)
+        {
+            PasswordHash = password;
+        }
     }
 }

@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="15.0.1" />
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.7" />
   </ItemGroup>
 
@@ -16,9 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\UseCases\" />
-    <Folder Include="Interfaces\Repositories\" />
-    <Folder Include="UseCases\" />
+    <Folder Include="Interfaces\UseCases\Accounts\" />
+    <Folder Include="Interfaces\UseCases\Categories\" />
+    <Folder Include="Interfaces\UseCases\Movements\" />
+    <Folder Include="Interfaces\UseCases\PushSubscriptions\" />
+    <Folder Include="Interfaces\UseCases\RecurringMovements\" />
+    <Folder Include="Interfaces\UseCases\Notifications\" />
   </ItemGroup>
 
 </Project>
