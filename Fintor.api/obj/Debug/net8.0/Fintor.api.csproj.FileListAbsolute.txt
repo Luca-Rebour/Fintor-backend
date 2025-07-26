@@ -181,8 +181,6 @@ C:\Users\lucar\source\repos\Fintor.api\Fintor.api\bin\Debug\net8.0\ru\Microsoft.
 C:\Users\lucar\source\repos\Fintor.api\Fintor.api\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\lucar\source\repos\Fintor.api\Fintor.api\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\lucar\source\repos\Fintor.api\Fintor.api\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\bin\Debug\net8.0\appsettings.Development.json
-C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\bin\Debug\net8.0\appsettings.json
 C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\bin\Debug\net8.0\Fintor.api.exe
 C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\bin\Debug\net8.0\Fintor.api.deps.json
 C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\bin\Debug\net8.0\Fintor.api.runtimeconfig.json
@@ -366,3 +364,4 @@ C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\obj\Debug\net8.0\refint\Fint
 C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\obj\Debug\net8.0\Fintor.api.pdb
 C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\obj\Debug\net8.0\Fintor.api.genruntimeconfig.cache
 C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\obj\Debug\net8.0\ref\Fintor.api.dll
+C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\bin\Debug\net8.0\appsettings.json

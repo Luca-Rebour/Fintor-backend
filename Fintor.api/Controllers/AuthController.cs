@@ -19,7 +19,7 @@ namespace Fintor.api.Controllers
         [HttpPost("sign-in")]
         public async Task<SignInResponseDTO> SignIn(SignInDTO signInDTO)
         {
-            SignInResponseDTO response = await _signIn.Execute(signInDTO);
+            SignInResponseDTO response = await _signIn.ExecuteAsync(signInDTO);
             return response;
         }
     }
