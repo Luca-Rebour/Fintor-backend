@@ -10,6 +10,6 @@ namespace Application.Interfaces.UseCases.Auth
 {
     public interface ISignIn
     {
-        Task<SignInResponseDTO> Execute(SignInDTO signInDTO);
+        Task<SignInResponseDTO> ExecuteAsync(SignInDTO signInDTO);
     }
 }

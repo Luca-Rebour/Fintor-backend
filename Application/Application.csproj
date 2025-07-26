@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\UseCases\Accounts\" />
     <Folder Include="Interfaces\UseCases\Categories\" />
     <Folder Include="Interfaces\UseCases\Movements\" />
     <Folder Include="Interfaces\UseCases\PushSubscriptions\" />

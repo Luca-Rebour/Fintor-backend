@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "Fintor.api.Controllers.AccountController",
+    "Method": "CreateAccount",
+    "RelativePath": "api/accounts/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createAccountDTO",
+        "Type": "Application.DTOs.Accounts.CreateAccountDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Fintor.api.Controllers.AuthController",
     "Method": "SignIn",
     "RelativePath": "api/auth/sign-in",

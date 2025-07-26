@@ -33,7 +33,7 @@ namespace Application.UseCases.Auth
             _mapper = mapper;
             _jwtService = jwtService;
         }
-        public async Task<SignInResponseDTO> Execute(SignInDTO signInDTO)
+        public async Task<SignInResponseDTO> ExecuteAsync(SignInDTO signInDTO)
         {
             User user = await _userRepository.GetUserByEmail(signInDTO.Email);
 

@@ -18,10 +18,10 @@ namespace Infrastructure.Services
 
         public string GenerateToken(Guid userId, string email)
         {
-            var secretKey = _configuration["Jwt:Secret"];
-            var issuer = _configuration["Jwt:Issuer"];
-            var audience = _configuration["Jwt:Audience"];
-            var expiresMinutes = int.Parse(_configuration["Jwt:ExpiresInMinutes"]!);
+            var secretKey = _configuration["JwtSettings:Secret"];
+            var issuer = _configuration["JwtSettings:Issuer"];
+            var audience = _configuration["JwtSettings:Audience"];
+            var expiresMinutes = int.Parse(_configuration["JwtSettings:ExpirationMinutes"]!);
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey!));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -29,6 +29,7 @@ namespace Infrastructure.Services
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, userId.ToString()),
+                new Claim(ClaimTypes.NameIdentifier, userId.ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
