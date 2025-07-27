@@ -23,8 +23,6 @@ namespace Fintor.api.Controllers
         [Authorize]
         public async Task<IActionResult> CreateAccount(CreateAccountDTO createAccountDTO)
         {
-            var authHeader = Request.Headers["Authorization"].FirstOrDefault();
-            Console.WriteLine($"Authorization Header: {authHeader}");
             Guid userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
             Account account = await _createAccount.ExecuteAsync(createAccountDTO, userId);
             return Ok(account);
