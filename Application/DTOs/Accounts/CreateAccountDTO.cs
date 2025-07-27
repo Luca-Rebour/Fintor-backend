@@ -10,6 +10,7 @@ namespace Application.DTOs.Accounts
 {
     public class CreateAccountDTO
     {
+        public Guid CurrencyId { get; set; }
         public string Name { get; set; }
 
         public void Validate()

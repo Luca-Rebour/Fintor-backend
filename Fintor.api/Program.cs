@@ -119,6 +119,7 @@ namespace Fintor.api
 
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+            builder.Services.AddScoped<ICurrencyRepository, CurrencyRepository>();
 
             //Inyeccion de dependencias UseCases de User
             builder.Services.AddScoped<ICreateUser, CreateUser>();

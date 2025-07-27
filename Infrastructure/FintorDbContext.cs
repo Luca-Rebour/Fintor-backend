@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Infrastructure.Seeds;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,18 +21,45 @@ namespace Infrastructure
         public DbSet<Category> Categories => Set<Category>();
         public DbSet<Notification> Notifications => Set<Notification>();
         public DbSet<PushSubscription> PushSubscriptions => Set<PushSubscription>();
+        public DbSet<Currency> Currencies => Set<Currency>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.SeedCurrencies();
 
             modelBuilder.Entity<Account>(builder =>
             {
                 builder.HasKey(a => a.Id);
+
+                builder.HasOne(a => a.Currency)
+                   .WithMany()
+                   .HasForeignKey(a => a.CurrencyId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
                 builder.Property(a => a.Name)
                        .IsRequired()
                        .HasMaxLength(50);
             });
+
+            modelBuilder.Entity<Currency>(builder =>
+            {
+                builder.HasKey(c => c.Id);
+
+                builder.Property(c => c.Code)
+                       .IsRequired()
+                       .HasMaxLength(5);
+
+                builder.Property(c => c.Symbol)
+                       .IsRequired()
+                       .HasMaxLength(5);
+
+                builder.Property(c => c.Name)
+                       .IsRequired()
+                       .HasMaxLength(50);
+
+            });
+
 
             modelBuilder.Entity<Category>(builder =>
             {

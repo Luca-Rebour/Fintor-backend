@@ -10,17 +10,20 @@ namespace Domain.Entities
     {
         public Guid Id { get; private set; }
         public Guid UserId { get; private set; }
+        public Guid CurrencyId { get; private set; }
         public string Name { get; private set; } = null!;
 
         public User User { get; private set; } = null!;
+        public Currency Currency { get; private set; } = null!;
         public ICollection<Movement> Movements { get; private set; } = new List<Movement>();
         public ICollection<RecurringMovement> RecurringMovements { get; private set; } = new List<RecurringMovement>();
 
         private Account() { }
 
-        public Account(Guid userId, string name)
+        public Account(Guid userId, Guid currencyId, string name)
         {
             Id = Guid.NewGuid();
+            CurrencyId = currencyId;
             UserId = userId;
             Name = name;
         }
