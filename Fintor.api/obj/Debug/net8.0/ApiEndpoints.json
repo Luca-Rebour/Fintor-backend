@@ -16,6 +16,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Fintor.api.Controllers.AccountController",
+    "Method": "DeleteAccount",
+    "RelativePath": "api/accounts/delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fintor.api.Controllers.AccountController",
+    "Method": "GetAllAccounts",
+    "RelativePath": "api/accounts/get-all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Fintor.api.Controllers.AuthController",
     "Method": "SignIn",
     "RelativePath": "api/auth/sign-in",

@@ -1,5 +1,5 @@
 ﻿using Application.DTOs.Accounts;
-using Application.DTOs.Users;
+using Application.DTOs.Movements;
 using AutoMapper;
 using Domain.Entities;
 using System;
@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Application.MappingProfiles
 {
-    public class AccountProfile : Profile
+    public class MovementProfile : Profile
     {
-        public AccountProfile() {
-            CreateMap<CreateAccountDTO, Account>();
-            CreateMap<Account, AccountDTO>();
+        public MovementProfile()
+        {
+            CreateMap<Movement, MovementDTO>();
         }
     }
 }

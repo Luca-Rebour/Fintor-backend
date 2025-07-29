@@ -1,5 +1,8 @@
 ﻿using Application.Interfaces.Repositories;
 using Domain.Entities;
+using Domain.Exceptions;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +24,34 @@ namespace Infrastructure.Repositories
             await _context.SaveChangesAsync();
             return account;
         }
+
+        public async Task DeleteAccountAsync(Guid accountId)
+        {
+            var account = await _context.Accounts.FindAsync(accountId);
+            if (account == null)
+            {
+                throw new NotFoundException("Acount not found");
+            }
+
+            _context.Accounts.Remove(account);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Account>> GetAllAccountsAsync(Guid userId)
+        {
+            return await _context.Accounts
+                .AsNoTracking()
+                .Where(a => a.UserId == userId)
+                .Include(a => a.Currency)
+                .Include(a => a.Movements)
+                    .ThenInclude(m => m.Category)
+                .Include(a => a.Movements)
+                    .ThenInclude(m => m.RecurringMovement)
+                .Include(a => a.RecurringMovements)
+                .OrderBy(a => a.Name)
+                .ToListAsync();
+        }
+
+
     }
 }

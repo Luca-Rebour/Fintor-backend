@@ -108,6 +108,10 @@ namespace Fintor.api
 
             var mapperConfig = new MapperConfiguration(cfg =>
             {
+                cfg.AddProfile<AccountProfile>();
+                cfg.AddProfile<CategoryProfile>();
+                cfg.AddProfile<MovementProfile>();
+                cfg.AddProfile<RecurringMovementProfile>();
                 cfg.AddProfile<UserProfile>();
             });
 
@@ -129,6 +133,8 @@ namespace Fintor.api
 
             //Inyeccion de dependencias UseCases de Account
             builder.Services.AddScoped<ICreateAccount, CreateAccount>();
+            builder.Services.AddScoped<IDeleteAccount, DeleteAccount>();
+            builder.Services.AddScoped<IGetAllAccounts, GetAllAccounts>();
 
 
             //Inyeccion de dependencias Services

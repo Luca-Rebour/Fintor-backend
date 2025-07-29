@@ -14,9 +14,13 @@ namespace Fintor.api.Controllers
     public class AccountController : Controller
     {
         private readonly ICreateAccount _createAccount;
-        public AccountController(ICreateAccount createAccount) 
+        private readonly IDeleteAccount _deleteAccount;
+        private readonly IGetAllAccounts _getAllAccounts;
+        public AccountController(ICreateAccount createAccount, IDeleteAccount deleteAccount, IGetAllAccounts getAllAccounts) 
         { 
             _createAccount = createAccount;
+            _deleteAccount = deleteAccount;
+            _getAllAccounts = getAllAccounts;
         }
 
         [HttpPost("create")]
@@ -26,6 +30,23 @@ namespace Fintor.api.Controllers
             Guid userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
             Account account = await _createAccount.ExecuteAsync(createAccountDTO, userId);
             return Ok(account);
+        }
+
+        [HttpDelete("delete")]
+        [Authorize]
+        public async Task<IActionResult> DeleteAccount(Guid accountId)
+        {
+            _deleteAccount.ExecuteAsync(accountId);
+            return NoContent();
+        }
+
+        [HttpGet("get-all")]
+        [Authorize]
+        public async Task<IActionResult> GetAllAccounts()
+        {
+            Guid userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+            IEnumerable<AccountDTO> accounts = await _getAllAccounts.ExecuteAsync(userId);
+            return Ok(accounts);
         }
     }
 }
