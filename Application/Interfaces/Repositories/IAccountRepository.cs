@@ -10,5 +10,7 @@ namespace Application.Interfaces.Repositories
     public interface IAccountRepository
     {
         Task<Account> CreateAccountAsync(Account account);
+        Task DeleteAccountAsync(Guid accountId);
+        Task<List<Account>> GetAllAccountsAsync(Guid userId);
     }
 }

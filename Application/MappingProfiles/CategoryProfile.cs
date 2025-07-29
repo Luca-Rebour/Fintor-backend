@@ -1,5 +1,5 @@
 ﻿using Application.DTOs.Accounts;
-using Application.DTOs.Users;
+using Application.DTOs.Categories;
 using AutoMapper;
 using Domain.Entities;
 using System;
@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Application.MappingProfiles
 {
-    public class AccountProfile : Profile
+    public class CategoryProfile : Profile
     {
-        public AccountProfile() {
-            CreateMap<CreateAccountDTO, Account>();
-            CreateMap<Account, AccountDTO>();
+        public CategoryProfile()
+        {
+            CreateMap<Category, CategoryDTO>();
         }
     }
 }
