@@ -23,6 +23,9 @@ using Application.Interfaces.UseCases.Movements;
 using Application.UseCases.Movements;
 using Application.Interfaces.UseCases.Categories;
 using Application.UseCases.Categories;
+using Application.Interfaces.Common;
+using Application.Interfaces.UseCases.RecurringMovements;
+using Application.UseCases.RecurringMovements;
 
 
 namespace Fintor.api
@@ -130,6 +133,8 @@ namespace Fintor.api
             builder.Services.AddScoped<ICurrencyRepository, CurrencyRepository>();
             builder.Services.AddScoped<IMovementRepository, MovementRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddScoped<IRecurringMovementRepository, RecurringMovementRepository>();
+
 
             // Inyeccion de dependencias UseCases de User
             builder.Services.AddScoped<ICreateUser, CreateUser>();
@@ -150,9 +155,16 @@ namespace Fintor.api
             builder.Services.AddScoped<ICreateCategory, CreateCategory>();
             builder.Services.AddScoped<IGetAllCategories, GetAllCategories>();
 
+            // Inyeccion de dependencias UseCases de RecurringMovement
+            builder.Services.AddScoped<IGenerateRecurringMovements, GenerateRecurringMovements>();
+            builder.Services.AddScoped<ICreateRecurringMovement, CreateRecurringMovement>();
+
 
             //Inyeccion de dependencias Services
             builder.Services.AddScoped<IJwtService, JwtService>();
+            builder.Services.AddHostedService<RecurringMovementHostedService>();
+            builder.Services.AddScoped<IDateTimeProvider, DateTimeProvider>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

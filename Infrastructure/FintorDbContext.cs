@@ -187,7 +187,7 @@ namespace Infrastructure
                        .IsRequired()
                        .HasMaxLength(250);
 
-                builder.Property(rm => rm.movementType)
+                builder.Property(rm => rm.MovementType)
                        .IsRequired();
 
                 builder.Property(rm => rm.Frequency)
@@ -200,7 +200,7 @@ namespace Infrastructure
                        .IsRequired();
 
                 builder.Property(rm => rm.LastGeneratedAt)
-                       .IsRequired();
+                       .IsRequired(false);
 
 
 

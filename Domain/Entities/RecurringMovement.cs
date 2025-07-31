@@ -15,11 +15,11 @@ namespace Domain.Entities
         public string Name { get; private set; }
         public decimal Amount { get; private set; }
         public string Description { get; private set; }
-        public MovementType movementType { get; private set; }
+        public MovementType MovementType { get; private set; }
         public Frequency Frequency { get; private set; }
         public DateOnly StartDate { get; private set; }
         public DateOnly EndDate { get; private set; }
-        public DateOnly LastGeneratedAt { get; private set; }
+        public DateOnly? LastGeneratedAt { get; private set; }
         public ICollection<Movement> Movements { get; private set; } = new List<Movement>();
         public Account Account { get; private set; } = null!;
 
@@ -27,7 +27,7 @@ namespace Domain.Entities
         {
 
         }
-        public RecurringMovement(Guid categoryId, Guid accountId, string name, decimal amount, string description, MovementType movementType, Frequency frequency, DateOnly startDate, DateOnly endDate, DateOnly lastGeneratedAt)
+        public RecurringMovement(Guid categoryId, Guid accountId, string name, decimal amount, string description, MovementType movementType, Frequency frequency, DateOnly startDate, DateOnly endDate)
         {
             Id = Guid.NewGuid();
             CategoryId = categoryId;
@@ -35,19 +35,37 @@ namespace Domain.Entities
             Name = name;
             Amount = amount;
             Description = description;
-            this.movementType = movementType;
+            MovementType = movementType;
             Frequency = frequency;
             StartDate = startDate;
             EndDate = endDate;
-            LastGeneratedAt = lastGeneratedAt;
         }
         public bool ShouldGenerate(DateOnly today)
         {
-            if (LastGeneratedAt < today)
+            if (today < StartDate || today > EndDate)
+                return false;
+
+            if (LastGeneratedAt == null)
+                return today == StartDate;
+
+            var nextDueDate = GetNextDueDate(LastGeneratedAt.Value);
+            return today >= nextDueDate;
+
+        }
+
+        private DateOnly GetNextDueDate(DateOnly lastDate)
+        {
+            return Frequency switch
             {
-                return true;
-            }
-            return false;
+                Frequency.Daily => lastDate.AddDays(1),
+                Frequency.Weekly => lastDate.AddDays(7),
+                Frequency.Monthly => lastDate.AddMonths(1),
+                _ => throw new NotSupportedException("Frecuencia no soportada")
+            };
+        }
+        public void SetLastGenerated(DateOnly date)
+        {
+            LastGeneratedAt = date;
         }
     }
 }
