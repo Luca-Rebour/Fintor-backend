@@ -13,9 +13,11 @@ namespace Fintor.api.Controllers
     public class CategoryController : Controller
     {
         private readonly ICreateCategory _createCategory;
-        public CategoryController(ICreateCategory createCategory)
+        private readonly IGetAllCategories _getAllCategories;
+        public CategoryController(ICreateCategory createCategory, IGetAllCategories getAllCategories)
         {
             _createCategory = createCategory;
+            _getAllCategories = getAllCategories;
         }
 
         [HttpPost("create")]
@@ -25,6 +27,15 @@ namespace Fintor.api.Controllers
             Guid userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
             CategoryDTO categoryDTO = await _createCategory.ExecuteAsync(createCategoryDTO, userId);
             return Ok(categoryDTO);
+        }
+
+        [HttpGet("get-all")]
+        [Authorize]
+        public async Task<IActionResult> GetAll()
+        {
+            Guid userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+            List<CategoryDTO> categories = await _getAllCategories.Execute(userId);
+            return Ok(categories);
         }
     }
 }

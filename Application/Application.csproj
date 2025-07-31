@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <Folder Include="Interfaces\UseCases\PushSubscriptions\" />
-    <Folder Include="Interfaces\UseCases\RecurringMovements\" />
     <Folder Include="Interfaces\UseCases\Notifications\" />
   </ItemGroup>
 

@@ -252,8 +252,11 @@ namespace Infrastructure.Migrations
                     b.Property<int>("Frequency")
                         .HasColumnType("int");
 
-                    b.Property<DateOnly>("LastGeneratedAt")
+                    b.Property<DateOnly?>("LastGeneratedAt")
                         .HasColumnType("date");
+
+                    b.Property<int>("MovementType")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -262,9 +265,6 @@ namespace Infrastructure.Migrations
 
                     b.Property<DateOnly>("StartDate")
                         .HasColumnType("date");
-
-                    b.Property<int>("movementType")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

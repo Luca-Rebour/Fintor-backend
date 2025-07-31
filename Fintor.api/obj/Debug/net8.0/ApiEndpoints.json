@@ -84,6 +84,26 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Fintor.api.Controllers.CategoryController",
+    "Method": "GetAll",
+    "RelativePath": "api/categories/get-all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fintor.api.Controllers.DevToolsController",
+    "Method": "RunRecurring",
+    "RelativePath": "api/DevTools/run-recurring",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Fintor.api.Controllers.MovementController",
     "Method": "CreateMovementNEW",
     "RelativePath": "api/movements/create",
@@ -94,6 +114,22 @@
       {
         "Name": "createMovementDTO",
         "Type": "Application.DTOs.Movements.CreateMovementDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fintor.api.Controllers.RecurringMovementController",
+    "Method": "CreateRecurringMovement",
+    "RelativePath": "api/recurring-movements/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createRecurringMovementDTO",
+        "Type": "Application.DTOs.RecurringMovements.CreateRecurringMovementDTO",
         "IsRequired": true
       }
     ],
