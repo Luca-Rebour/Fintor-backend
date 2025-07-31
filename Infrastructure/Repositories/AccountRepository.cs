@@ -43,11 +43,6 @@ namespace Infrastructure.Repositories
                 .AsNoTracking()
                 .Where(a => a.UserId == userId)
                 .Include(a => a.Currency)
-                .Include(a => a.Movements)
-                    .ThenInclude(m => m.Category)
-                .Include(a => a.Movements)
-                    .ThenInclude(m => m.RecurringMovement)
-                .Include(a => a.RecurringMovements)
                 .OrderBy(a => a.Name)
                 .ToListAsync();
         }

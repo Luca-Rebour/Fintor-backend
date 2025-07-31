@@ -19,6 +19,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Application.Interfaces.UseCases.Movements;
+using Application.UseCases.Movements;
+using Application.Interfaces.UseCases.Categories;
+using Application.UseCases.Categories;
 
 
 namespace Fintor.api
@@ -119,22 +123,31 @@ namespace Fintor.api
 
             builder.Services.AddSingleton(mapper);
 
-            //Inyeccion de dependencias de Repositories
+            // Inyeccion de dependencias de Repositories
 
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
             builder.Services.AddScoped<ICurrencyRepository, CurrencyRepository>();
+            builder.Services.AddScoped<IMovementRepository, MovementRepository>();
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
-            //Inyeccion de dependencias UseCases de User
+            // Inyeccion de dependencias UseCases de User
             builder.Services.AddScoped<ICreateUser, CreateUser>();
 
-            //Inyeccion de dependencias UseCases de Auth
+            // Inyeccion de dependencias UseCases de Auth
             builder.Services.AddScoped<ISignIn, SignIn>();
 
-            //Inyeccion de dependencias UseCases de Account
+            // Inyeccion de dependencias UseCases de Account
             builder.Services.AddScoped<ICreateAccount, CreateAccount>();
             builder.Services.AddScoped<IDeleteAccount, DeleteAccount>();
             builder.Services.AddScoped<IGetAllAccounts, GetAllAccounts>();
+
+            // Inyeccion de dependencias UseCases de Movement
+            builder.Services.AddScoped<ICreateMovement, CreateMovement>();
+            builder.Services.AddScoped<IGetAccountMovements, GetAccountMovements>();
+
+            // Inyeccion de dependencias UseCases de Category
+            builder.Services.AddScoped<ICreateCategory, CreateCategory>();
 
 
             //Inyeccion de dependencias Services

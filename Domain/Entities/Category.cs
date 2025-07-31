@@ -12,7 +12,6 @@ namespace Domain.Entities
         public Guid UserId { get; private set; }
         public string Name { get; private set; }
         public string Icon {  get; private set; }
-        public ICollection<Movement> Movements { get; private set; } = new List<Movement>();
 
         public Category() { }
         public Category(Guid userId, string name, string icon)

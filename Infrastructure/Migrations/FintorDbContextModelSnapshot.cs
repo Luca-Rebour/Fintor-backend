@@ -334,7 +334,7 @@ namespace Infrastructure.Migrations
                     b.HasOne("Domain.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Currency");
@@ -354,13 +354,13 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.Movement", b =>
                 {
                     b.HasOne("Domain.Entities.Account", "Account")
-                        .WithMany("Movements")
+                        .WithMany()
                         .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Domain.Entities.Category", "Category")
-                        .WithMany("Movements")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -398,7 +398,7 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.RecurringMovement", b =>
                 {
                     b.HasOne("Domain.Entities.Account", "Account")
-                        .WithMany("RecurringMovements")
+                        .WithMany()
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -410,18 +410,6 @@ namespace Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Account");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Account", b =>
-                {
-                    b.Navigation("Movements");
-
-                    b.Navigation("RecurringMovements");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Category", b =>
-                {
-                    b.Navigation("Movements");
                 });
 
             modelBuilder.Entity("Domain.Entities.RecurringMovement", b =>

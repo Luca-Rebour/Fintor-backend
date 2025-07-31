@@ -26,7 +26,7 @@ namespace Domain.Entities
         {
 
         }
-        public Movement(Guid accountId, Guid recurringMovementId, Guid categoryId, decimal amount, string description, DateTime date, MovementType movementType)
+        public Movement(Guid accountId, Guid? recurringMovementId, Guid categoryId, decimal amount, string description, MovementType movementType)
         {
             Id = Guid.NewGuid();
             AccountId = accountId;
@@ -34,7 +34,7 @@ namespace Domain.Entities
             CategoryId = categoryId;
             Amount = amount;
             Description = description;
-            Date = date;
+            Date = DateTime.UtcNow;
             MovementType = movementType;
         }
 

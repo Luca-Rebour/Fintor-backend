@@ -68,6 +68,38 @@
     ]
   },
   {
+    "ContainingType": "Fintor.api.Controllers.CategoryController",
+    "Method": "CreateCategory",
+    "RelativePath": "api/categories/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createCategoryDTO",
+        "Type": "Application.DTOs.Categories.CreateCategoryDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fintor.api.Controllers.MovementController",
+    "Method": "CreateMovementNEW",
+    "RelativePath": "api/movements/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createMovementDTO",
+        "Type": "Application.DTOs.Movements.CreateMovementDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Fintor.api.Controllers.UserController",
     "Method": "CreateUser",
     "RelativePath": "api/users/create-user",
