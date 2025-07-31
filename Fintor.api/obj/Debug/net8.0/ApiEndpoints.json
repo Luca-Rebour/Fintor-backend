@@ -84,6 +84,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Fintor.api.Controllers.CategoryController",
+    "Method": "GetAll",
+    "RelativePath": "api/categories/get-all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Fintor.api.Controllers.MovementController",
     "Method": "CreateMovementNEW",
     "RelativePath": "api/movements/create",

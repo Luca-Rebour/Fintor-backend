@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces.Repositories;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,13 @@ namespace Infrastructure.Repositories
             _context.Categories.Add(category);
             await _context.SaveChangesAsync();
             return category;
+        }
+
+        public async Task<List<Category>> GetAllAsync(Guid userId)
+        {
+            return await _context.Categories
+                .Where(c => c.UserId == userId)
+                .ToListAsync();
         }
     }
 }

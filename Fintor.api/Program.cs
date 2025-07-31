@@ -148,6 +148,7 @@ namespace Fintor.api
 
             // Inyeccion de dependencias UseCases de Category
             builder.Services.AddScoped<ICreateCategory, CreateCategory>();
+            builder.Services.AddScoped<IGetAllCategories, GetAllCategories>();
 
 
             //Inyeccion de dependencias Services
