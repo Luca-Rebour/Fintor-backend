@@ -1,23 +1,26 @@
 ﻿using Application.DTOs.Accounts;
 using Application.Interfaces.Repositories;
 using Application.Interfaces.UseCases.Accounts;
+using Application.Interfaces.UseCases.Movements;
 using AutoMapper;
 using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Domain.Enums;
 
 namespace Application.UseCases.Accounts
 {
     public class GetAllAccounts : IGetAllAccounts
     {
         private readonly IAccountRepository _accountRepository;
+        private readonly IGetAccountMovements _getAccountMovements;
         private readonly IMapper _mapper;
-        public GetAllAccounts(IAccountRepository accountRepository, IMapper mapper)
+
+        public GetAllAccounts(
+            IAccountRepository accountRepository,
+            IGetAccountMovements getAccountMovements,
+            IMapper mapper)
         {
             _accountRepository = accountRepository;
+            _getAccountMovements = getAccountMovements;
             _mapper = mapper;
         }
 
@@ -25,12 +28,20 @@ namespace Application.UseCases.Accounts
         {
             List<Account> accounts = await _accountRepository.GetAllAccountsAsync(userId);
             List<AccountDTO> ret = _mapper.Map<List<AccountDTO>>(accounts);
-            foreach (AccountDTO a in ret)
+
+            foreach (AccountDTO accountDto in ret)
             {
-                a.Balance = a.Movements != null && a.Movements.Any()
-                    ? a.Movements.Sum(m => m.Amount)
+                var movements = await _getAccountMovements.ExecuteAsync(accountDto.Id);
+                accountDto.Movements = movements;
+                accountDto.Balance = movements.Any()
+                    ? movements
+                        .Where(m => m.MovementType == MovementType.Income).Sum(m => m.Amount)
+                        - movements.Where(m => m.MovementType == MovementType.Expense).Sum(m => m.Amount)
                     : 0;
+
             }
+
+
             return ret;
         }
     }

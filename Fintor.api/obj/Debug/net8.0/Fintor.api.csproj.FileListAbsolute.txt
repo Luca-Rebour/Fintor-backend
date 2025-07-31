@@ -347,7 +347,6 @@ C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\obj\Debug\net8.0\Fintor.api.
 C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\obj\Debug\net8.0\Fintor.api.AssemblyInfoInputs.cache
 C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\obj\Debug\net8.0\Fintor.api.AssemblyInfo.cs
 C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\obj\Debug\net8.0\Fintor.api.csproj.CoreCompileInputs.cache
-C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\obj\Debug\net8.0\Fintor.api.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\obj\Debug\net8.0\Fintor.api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\obj\Debug\net8.0\Fintor.api.sourcelink.json
 C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\obj\Debug\net8.0\staticwebassets.build.json
@@ -365,3 +364,4 @@ C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\obj\Debug\net8.0\Fintor.api.
 C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\obj\Debug\net8.0\Fintor.api.genruntimeconfig.cache
 C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\obj\Debug\net8.0\ref\Fintor.api.dll
 C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\bin\Debug\net8.0\appsettings.json
+C:\Users\lucar\Desktop\Fintor\Fintor.api\Fintor.api\obj\Debug\net8.0\Fintor.api.MvcApplicationPartsAssemblyInfo.cs

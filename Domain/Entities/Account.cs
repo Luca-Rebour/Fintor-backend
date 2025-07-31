@@ -15,8 +15,6 @@ namespace Domain.Entities
 
         public User User { get; private set; } = null!;
         public Currency Currency { get; private set; } = null!;
-        public ICollection<Movement> Movements { get; private set; } = new List<Movement>();
-        public ICollection<RecurringMovement> RecurringMovements { get; private set; } = new List<RecurringMovement>();
 
         private Account() { }
 

@@ -1,0 +1,25 @@
+﻿using Application.Interfaces.Repositories;
+using Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Infrastructure.Repositories
+{
+    public class CategoryRepository : ICategoryRepository
+    {
+        private readonly FintorDbContext _context;
+        public CategoryRepository(FintorDbContext context)
+        {
+            _context = context;
+        }
+        public async Task<Category> CreateAsync(Category category)
+        {
+            _context.Categories.Add(category);
+            await _context.SaveChangesAsync();
+            return category;
+        }
+    }
+}

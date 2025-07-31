@@ -32,6 +32,11 @@ namespace Infrastructure
             {
                 builder.HasKey(a => a.Id);
 
+                builder.HasOne(a => a.User)
+                   .WithMany()
+                   .HasForeignKey(a => a.UserId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
                 builder.HasOne(a => a.Currency)
                    .WithMany()
                    .HasForeignKey(a => a.CurrencyId)
@@ -81,10 +86,7 @@ namespace Infrastructure
                        .HasForeignKey(c => c.UserId)
                        .OnDelete(DeleteBehavior.Cascade);
 
-                builder.HasMany(c => c.Movements)
-                       .WithOne(m => m.Category)
-                       .HasForeignKey(m => m.CategoryId)
-                       .OnDelete(DeleteBehavior.Restrict);
+               
             });
  
 
@@ -96,6 +98,15 @@ namespace Infrastructure
                     .IsRequired()
                     .HasPrecision(18, 2);
 
+                builder.HasOne(m => m.Category)
+                    .WithMany()
+                    .HasForeignKey(m => m.CategoryId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                builder.HasOne(m => m.Account)
+                   .WithMany()
+                   .HasForeignKey(m => m.AccountId)
+                   .OnDelete(DeleteBehavior.Restrict);
 
                 builder.Property(m => m.Description)
                        .IsRequired()
@@ -106,21 +117,6 @@ namespace Infrastructure
 
                 builder.Property(m => m.MovementType)
                        .IsRequired();
-
-                builder.HasOne(m => m.Account)
-                       .WithMany(a => a.Movements)
-                       .HasForeignKey(m => m.AccountId)
-                       .OnDelete(DeleteBehavior.Cascade);
-
-                builder.HasOne(m => m.Category)
-                       .WithMany(c => c.Movements)
-                       .HasForeignKey(m => m.CategoryId)
-                       .OnDelete(DeleteBehavior.Restrict);
-
-                builder.HasOne(m => m.RecurringMovement)
-                       .WithMany(rm => rm.Movements)
-                       .HasForeignKey(m => m.RecurringMovementId)
-                       .OnDelete(DeleteBehavior.SetNull);
             });
 
             modelBuilder.Entity<Notification>(builder =>
@@ -206,15 +202,16 @@ namespace Infrastructure
                 builder.Property(rm => rm.LastGeneratedAt)
                        .IsRequired();
 
-                builder.HasOne(rm => rm.Account)
-                    .WithMany(a => a.RecurringMovements)
-                    .HasForeignKey(rm => rm.AccountId)
-                    .OnDelete(DeleteBehavior.Restrict);
 
 
                 builder.HasOne<Category>()
                        .WithMany()
                        .HasForeignKey(rm => rm.CategoryId)
+                       .OnDelete(DeleteBehavior.Restrict);
+
+                builder.HasOne(rm => rm.Account)
+                       .WithMany()
+                       .HasForeignKey(rm => rm.AccountId)
                        .OnDelete(DeleteBehavior.Restrict);
 
                 builder.HasMany(rm => rm.Movements)
