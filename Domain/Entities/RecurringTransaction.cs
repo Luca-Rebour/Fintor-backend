@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class RecurringMovement
+    public class RecurringTransaction
     {
         public Guid Id { get; private set; }
         public Guid CategoryId { get; private set; }
@@ -15,19 +15,19 @@ namespace Domain.Entities
         public string Name { get; private set; }
         public decimal Amount { get; private set; }
         public string Description { get; private set; }
-        public MovementType MovementType { get; private set; }
+        public TransactionType MovementType { get; private set; }
         public Frequency Frequency { get; private set; }
         public DateOnly StartDate { get; private set; }
         public DateOnly EndDate { get; private set; }
         public DateOnly? LastGeneratedAt { get; private set; }
-        public ICollection<Movement> Movements { get; private set; } = new List<Movement>();
+        public ICollection<Transaction> Transactions { get; private set; } = new List<Transaction>();
         public Account Account { get; private set; } = null!;
 
-        public RecurringMovement()
+        public RecurringTransaction()
         {
 
         }
-        public RecurringMovement(Guid categoryId, Guid accountId, string name, decimal amount, string description, MovementType movementType, Frequency frequency, DateOnly startDate, DateOnly endDate)
+        public RecurringTransaction(Guid categoryId, Guid accountId, string name, decimal amount, string description, TransactionType movementType, Frequency frequency, DateOnly startDate, DateOnly endDate)
         {
             Id = Guid.NewGuid();
             CategoryId = categoryId;

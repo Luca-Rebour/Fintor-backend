@@ -42,6 +42,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Fintor.api.Controllers.AccountController",
+    "Method": "GetAllMovements",
+    "RelativePath": "api/accounts/get-transactions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Fintor.api.Controllers.AuthController",
     "Method": "SignIn",
     "RelativePath": "api/auth/sign-in",
@@ -94,42 +110,32 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Fintor.api.Controllers.DevToolsController",
-    "Method": "RunRecurring",
-    "RelativePath": "api/DevTools/run-recurring",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Fintor.api.Controllers.MovementController",
-    "Method": "CreateMovementNEW",
-    "RelativePath": "api/movements/create",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "createMovementDTO",
-        "Type": "Application.DTOs.Movements.CreateMovementDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Fintor.api.Controllers.RecurringMovementController",
+    "ContainingType": "Fintor.api.Controllers.RecurringTransactionController",
     "Method": "CreateRecurringMovement",
-    "RelativePath": "api/recurring-movements/create",
+    "RelativePath": "api/recurring-transactions/create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "createRecurringMovementDTO",
-        "Type": "Application.DTOs.RecurringMovements.CreateRecurringMovementDTO",
+        "Type": "Application.DTOs.RecurringTransactions.CreateRecurringTransactionDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fintor.api.Controllers.TransactionController",
+    "Method": "CreateMovementNEW",
+    "RelativePath": "api/transactions/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createMovementDTO",
+        "Type": "Application.DTOs.Transactions.CreateTransactionDTO",
         "IsRequired": true
       }
     ],

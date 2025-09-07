@@ -1,10 +1,13 @@
 ﻿using Application.DTOs.Accounts;
+using Application.DTOs.Transactions;
+using Application.DTOs.RecurringTransactions;
 using Application.Interfaces.Repositories;
 using Application.Interfaces.UseCases.Accounts;
-using Application.Interfaces.UseCases.Movements;
+using Application.Interfaces.UseCases.RecurringTransactions;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Enums;
+using System.ComponentModel;
 
 namespace Application.UseCases.Accounts
 {
@@ -13,15 +16,18 @@ namespace Application.UseCases.Accounts
         private readonly IAccountRepository _accountRepository;
         private readonly IGetAccountMovements _getAccountMovements;
         private readonly IMapper _mapper;
+        private readonly IGetAccountRecurringMovements _getAccountRecurringMovements;
 
         public GetAllAccounts(
             IAccountRepository accountRepository,
             IGetAccountMovements getAccountMovements,
-            IMapper mapper)
+            IMapper mapper,
+            IGetAccountRecurringMovements getAccountRecurringMovements)
         {
             _accountRepository = accountRepository;
             _getAccountMovements = getAccountMovements;
             _mapper = mapper;
+            _getAccountRecurringMovements = getAccountRecurringMovements;
         }
 
         public async Task<IEnumerable<AccountDTO>> ExecuteAsync(Guid userId)
@@ -31,12 +37,12 @@ namespace Application.UseCases.Accounts
 
             foreach (AccountDTO accountDto in ret)
             {
-                var movements = await _getAccountMovements.ExecuteAsync(accountDto.Id);
-                accountDto.Movements = movements;
+                List<TransactionDTO> movements = await _getAccountMovements.ExecuteAsync(accountDto.Id);
+                List<RecurringTransactionDTO> recurringMovements = await _getAccountRecurringMovements.ExecuteAsync(accountDto.Id);
                 accountDto.Balance = movements.Any()
                     ? movements
-                        .Where(m => m.MovementType == MovementType.Income).Sum(m => m.Amount)
-                        - movements.Where(m => m.MovementType == MovementType.Expense).Sum(m => m.Amount)
+                        .Where(m => m.MovementType == TransactionType.Income).Sum(m => m.Amount)
+                        - movements.Where(m => m.MovementType == TransactionType.Expense).Sum(m => m.Amount)
                     : 0;
 
             }

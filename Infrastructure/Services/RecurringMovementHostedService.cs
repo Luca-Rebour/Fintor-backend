@@ -1,4 +1,4 @@
-﻿using Application.Interfaces.UseCases.RecurringMovements;
+﻿using Application.Interfaces.UseCases.RecurringTransactions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 

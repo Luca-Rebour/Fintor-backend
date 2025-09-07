@@ -1,4 +1,5 @@
-﻿using Application.DTOs.Movements;
+﻿using Application.DTOs.Transactions;
+using Application.DTOs.RecurringTransactions;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,6 @@ namespace Application.DTOs.Accounts
         public string Name { get; set; }
         public decimal Balance { get; set; }
         public Currency Currency { get; set; }
-        public IEnumerable<MovementDTO> Movements { get; set; }
-        public ICollection<RecurringMovement> RecurringMovements { get; set; }
 
         public AccountDTO() { }
     }

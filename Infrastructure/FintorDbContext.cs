@@ -16,8 +16,8 @@ namespace Infrastructure
 
         public DbSet<User> Users => Set<User>();
         public DbSet<Account> Accounts => Set<Account>();
-        public DbSet<Movement> Movements => Set<Movement>();
-        public DbSet<RecurringMovement> RecurringMovements => Set<RecurringMovement>();
+        public DbSet<Transaction> Transactions => Set<Transaction>();
+        public DbSet<RecurringTransaction> RecurringTransactions => Set<RecurringTransaction>();
         public DbSet<Category> Categories => Set<Category>();
         public DbSet<Notification> Notifications => Set<Notification>();
         public DbSet<PushSubscription> PushSubscriptions => Set<PushSubscription>();
@@ -90,7 +90,7 @@ namespace Infrastructure
             });
  
 
-            modelBuilder.Entity<Movement>(builder =>
+            modelBuilder.Entity<Transaction>(builder =>
             {
                 builder.HasKey(m => m.Id);
 
@@ -170,7 +170,7 @@ namespace Infrastructure
                        .OnDelete(DeleteBehavior.Cascade);
             });
 
-            modelBuilder.Entity<RecurringMovement>(builder =>
+            modelBuilder.Entity<RecurringTransaction>(builder =>
             {
                 builder.HasKey(rm => rm.Id);
 
@@ -214,8 +214,8 @@ namespace Infrastructure
                        .HasForeignKey(rm => rm.AccountId)
                        .OnDelete(DeleteBehavior.Restrict);
 
-                builder.HasMany(rm => rm.Movements)
-                       .WithOne(m => m.RecurringMovement)
+                builder.HasMany(rm => rm.Transactions)
+                       .WithOne(m => m.RecurringTransaction)
                        .HasForeignKey(m => m.RecurringMovementId)
                        .OnDelete(DeleteBehavior.SetNull);
             });

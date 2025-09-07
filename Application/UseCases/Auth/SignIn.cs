@@ -38,7 +38,7 @@ namespace Application.UseCases.Auth
             User user = await _userRepository.GetUserByEmail(signInDTO.Email);
 
             if (user == null) {
-                throw new NotFoundException($"There is no user registered with email {signInDTO.Email}");
+                throw new InvalidCredentialException($"There is no user registered with email {signInDTO.Email}");
             }
 
             if(!_passwordService.VerifyPassword(user.PasswordHash, signInDTO.Password))

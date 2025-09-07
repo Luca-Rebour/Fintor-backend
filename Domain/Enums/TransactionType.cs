@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Enums
 {
-    public enum MovementType
+    public enum TransactionType
     {
         Income = 0,
         Expense = 1,
