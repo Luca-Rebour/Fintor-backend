@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.DTOs.Transactions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces.UseCases.Transactions
 {
-    internal interface IGetCurrentMonthTransactions
+    public interface IGetLatestTransactions
     {
+        Task<List<TransactionDTO>> ExecuteAsync(Guid userId);
     }
 }

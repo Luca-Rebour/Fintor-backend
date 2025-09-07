@@ -1,6 +1,7 @@
 ﻿using Application.DTOs.Accounts;
 using Application.DTOs.Transactions;
 using Application.Interfaces.UseCases.Accounts;
+using Application.UseCases.Accounts;
 using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -17,13 +18,13 @@ namespace Fintor.api.Controllers
         private readonly ICreateAccount _createAccount;
         private readonly IDeleteAccount _deleteAccount;
         private readonly IGetAllAccounts _getAllAccounts;
-        private readonly IGetAccountMovements _getAccountMovements;
-        public AccountController(ICreateAccount createAccount, IDeleteAccount deleteAccount, IGetAllAccounts getAllAccounts, IGetAccountMovements getAccountMovements)
+        private readonly IGetAccountTransactions _getAccountTransactions;
+        public AccountController(ICreateAccount createAccount, IDeleteAccount deleteAccount, IGetAllAccounts getAllAccounts, IGetAccountTransactions getAccountTransactions)
         {
             _createAccount = createAccount;
             _deleteAccount = deleteAccount;
             _getAllAccounts = getAllAccounts;
-            _getAccountMovements = getAccountMovements;
+            _getAccountTransactions = getAccountTransactions;
         }
 
         [HttpPost("create")]
@@ -56,7 +57,7 @@ namespace Fintor.api.Controllers
         [Authorize]
         public async Task<IActionResult> GetAllMovements(Guid accountId)
         {
-            IEnumerable<TransactionDTO> movements = await _getAccountMovements.ExecuteAsync(accountId);
+            IEnumerable<TransactionDTO> movements = await _getAccountTransactions.ExecuteAsync(accountId);
             return Ok(movements);
         }
     }

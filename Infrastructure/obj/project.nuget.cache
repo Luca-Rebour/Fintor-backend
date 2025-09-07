@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JN9ss4zxt30=",
+  "dgSpecHash": "AvRyQIj3HRk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\lucar\\Desktop\\Fintor\\Fintor.api\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\lucar\\Escritorio\\Fintor\\Fintor-backend\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lucar\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\lucar\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",

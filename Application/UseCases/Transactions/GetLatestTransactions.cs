@@ -11,22 +11,22 @@ using System.Threading.Tasks;
 
 namespace Application.UseCases.Transactions
 {
-    public class CreateTransaction : ICreateTransaction
+    public class GetLatestTransactions : IGetLatestTransactions
     {
         private readonly ITransactionRepository _transactionRepository;
         private readonly IMapper _mapper;
-        public CreateTransaction(ITransactionRepository transactionRepository, IMapper mapper)
+        public GetLatestTransactions(ITransactionRepository transactionRepository, IMapper mapper)
         {
             _transactionRepository = transactionRepository;
             _mapper = mapper;
         }
 
-        public async Task<TransactionDTO> ExecuteAsync(CreateTransactionDTO dto)
+        public async Task<List<TransactionDTO>> ExecuteAsync(Guid userId)
         {
-            Transaction movement = new Transaction(dto.AccountId, dto.RecurringMovementId, dto.CategoryId, dto.Amount, dto.Description, dto.MovementType);
-            Transaction newMovement = await _transactionRepository.CreateTransactionAsync(movement);
-            TransactionDTO ret = _mapper.Map<TransactionDTO>(newMovement);
-            return ret;
+            List<Transaction> transactions = await _transactionRepository.GetLatestTransactions(userId);
+
+            List<TransactionDTO> transactionsDto = _mapper.Map<List<TransactionDTO>>(transactions);
+            return transactionsDto;
         }
     }
 }

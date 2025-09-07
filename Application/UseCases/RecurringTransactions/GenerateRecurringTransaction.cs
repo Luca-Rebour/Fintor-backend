@@ -3,19 +3,19 @@ using Application.Interfaces.Repositories;
 using Application.Interfaces.UseCases.RecurringTransactions;
 using Domain.Entities;
 
-public class GenerateRecurringTransaction : IGenerateRecurringMovements
+public class GenerateRecurringTransaction : IGenerateRecurringTransaction
 {
     private readonly IRecurringMovementRepository _recurringMovementRepository;
-    private readonly IMovementRepository _movementRepository;
+    private readonly ITransactionRepository _transactionRepository;
     private readonly IDateTimeProvider _dateTimeProvider;
 
     public GenerateRecurringTransaction(
         IRecurringMovementRepository recurringRepo,
-        IMovementRepository movementRepo,
+        ITransactionRepository TransactionRepo,
         IDateTimeProvider dateTimeProvider)
     {
         _recurringMovementRepository = recurringRepo;
-        _movementRepository = movementRepo;
+        _transactionRepository = TransactionRepo;
         _dateTimeProvider = dateTimeProvider;
     }
 
@@ -31,7 +31,7 @@ public class GenerateRecurringTransaction : IGenerateRecurringMovements
                 var movement = new Transaction(r.AccountId,r.Id, r.CategoryId, r.Amount, r.Description, r.MovementType);
                 
 
-                await _movementRepository.CreateMovementAsync(movement);
+                await _transactionRepository.CreateTransactionAsync(movement);
                 r.SetLastGenerated(today);
                 await _recurringMovementRepository.UpdateAsync(r);
             }
