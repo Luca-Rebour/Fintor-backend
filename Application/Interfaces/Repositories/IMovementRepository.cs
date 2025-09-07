@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces.Repositories
 {
-    public interface IMovementRepository
+    public interface ITransactionRepository
     {
-        Task<Transaction> CreateMovementAsync(Transaction movement);
-        Task<List<Transaction>> GetAccountMovementsAsync(Guid accountId);
+        Task<Transaction> CreateTransactionAsync(Transaction movement);
+        Task<List<Transaction>> GetAccountTransactionsAsync(Guid accountId);
+        Task<List<Transaction>> GetLatestTransactions(Guid userId);
     }
 }

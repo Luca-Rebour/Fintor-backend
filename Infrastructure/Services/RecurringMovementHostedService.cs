@@ -16,7 +16,7 @@ public class RecurringMovementHostedService : BackgroundService
         while (!stoppingToken.IsCancellationRequested)
         {
             using var scope = _serviceProvider.CreateScope();
-            var generator = scope.ServiceProvider.GetRequiredService<IGenerateRecurringMovements>();
+            var generator = scope.ServiceProvider.GetRequiredService<IGenerateRecurringTransaction>();
             await generator.ExecuteAsync();
 
             await Task.Delay(TimeSpan.FromHours(24), stoppingToken);

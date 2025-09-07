@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces.UseCases.Accounts
 {
-    public interface IGetAccountMovements
+    public interface IGetAccountTransactions
     {
         Task<List<TransactionDTO>> ExecuteAsync(Guid accountId);
     }

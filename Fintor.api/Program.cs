@@ -131,7 +131,7 @@ namespace Fintor.api
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
             builder.Services.AddScoped<ICurrencyRepository, CurrencyRepository>();
-            builder.Services.AddScoped<IMovementRepository, TransactionRepository>();
+            builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             builder.Services.AddScoped<IRecurringMovementRepository, RecurringTransactionRepository>();
 
@@ -149,15 +149,16 @@ namespace Fintor.api
 
             // Inyeccion de dependencias UseCases de Transaction
             builder.Services.AddScoped<ICreateTransaction, CreateTransaction>();
-            builder.Services.AddScoped<IGetAccountMovements, GetAccountTransactions>();
+            builder.Services.AddScoped<IGetAccountTransactions, GetAccountTransactions>();
+            builder.Services.AddScoped<IGetLatestTransactions, GetLatestTransactions>();
 
             // Inyeccion de dependencias UseCases de Category
             builder.Services.AddScoped<ICreateCategory, CreateCategory>();
             builder.Services.AddScoped<IGetAllCategories, GetAllCategories>();
 
             // Inyeccion de dependencias UseCases de RecurringTransaction
-            builder.Services.AddScoped<IGenerateRecurringMovements, GenerateRecurringTransaction>();
-            builder.Services.AddScoped<ICreateRecurringMovement, CreateRecurringTransaction>();
+            builder.Services.AddScoped<IGenerateRecurringTransaction, GenerateRecurringTransaction>();
+            builder.Services.AddScoped<ICreateRecurringTransaction, CreateRecurringTransaction>();
             builder.Services.AddScoped<IGetAccountRecurringMovements, GetAccountRecurringTransactions>();
 
 

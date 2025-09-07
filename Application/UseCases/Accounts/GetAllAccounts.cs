@@ -14,13 +14,13 @@ namespace Application.UseCases.Accounts
     public class GetAllAccounts : IGetAllAccounts
     {
         private readonly IAccountRepository _accountRepository;
-        private readonly IGetAccountMovements _getAccountMovements;
+        private readonly IGetAccountTransactions _getAccountMovements;
         private readonly IMapper _mapper;
         private readonly IGetAccountRecurringMovements _getAccountRecurringMovements;
 
         public GetAllAccounts(
             IAccountRepository accountRepository,
-            IGetAccountMovements getAccountMovements,
+            IGetAccountTransactions getAccountMovements,
             IMapper mapper,
             IGetAccountRecurringMovements getAccountRecurringMovements)
         {

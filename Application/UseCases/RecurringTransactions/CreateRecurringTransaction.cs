@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.UseCases.RecurringTransactions
 {
-    public class CreateRecurringTransaction : ICreateRecurringMovement
+    public class CreateRecurringTransaction : ICreateRecurringTransaction
     {
         private readonly IRecurringMovementRepository _recurringMovementRepository;
         private readonly IMapper _mapper;

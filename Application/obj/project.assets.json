@@ -450,11 +450,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lucar\\Desktop\\Fintor\\Fintor.api\\Application\\Application.csproj",
+      "projectUniqueName": "C:\\Users\\lucar\\Escritorio\\Fintor\\Fintor-backend\\Application\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "C:\\Users\\lucar\\Desktop\\Fintor\\Fintor.api\\Application\\Application.csproj",
+      "projectPath": "C:\\Users\\lucar\\Escritorio\\Fintor\\Fintor-backend\\Application\\Application.csproj",
       "packagesPath": "C:\\Users\\lucar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lucar\\Desktop\\Fintor\\Fintor.api\\Application\\obj\\",
+      "outputPath": "C:\\Users\\lucar\\Escritorio\\Fintor\\Fintor-backend\\Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lucar\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -472,8 +472,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\lucar\\Desktop\\Fintor\\Fintor.api\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\lucar\\Desktop\\Fintor\\Fintor.api\\Domain\\Domain.csproj"
+            "C:\\Users\\lucar\\Escritorio\\Fintor\\Fintor-backend\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\lucar\\Escritorio\\Fintor\\Fintor-backend\\Domain\\Domain.csproj"
             }
           }
         }
@@ -518,7 +518,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

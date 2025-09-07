@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces.UseCases.RecurringTransactions
 {
-    public interface ICreateRecurringMovement
+    public interface ICreateRecurringTransaction
     {
         Task<RecurringTransactionDTO> ExecuteAsync(CreateRecurringTransactionDTO recurringMovementDTO);
     }
