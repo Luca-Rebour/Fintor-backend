@@ -19,13 +19,13 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
-using Application.Interfaces.UseCases.Movements;
-using Application.UseCases.Movements;
+using Application.Interfaces.UseCases.Transactions;
+using Application.UseCases.Transactions;
 using Application.Interfaces.UseCases.Categories;
 using Application.UseCases.Categories;
 using Application.Interfaces.Common;
-using Application.Interfaces.UseCases.RecurringMovements;
-using Application.UseCases.RecurringMovements;
+using Application.Interfaces.UseCases.RecurringTransactions;
+using Application.UseCases.RecurringTransactions;
 
 
 namespace Fintor.api
@@ -117,8 +117,8 @@ namespace Fintor.api
             {
                 cfg.AddProfile<AccountProfile>();
                 cfg.AddProfile<CategoryProfile>();
-                cfg.AddProfile<MovementProfile>();
-                cfg.AddProfile<RecurringMovementProfile>();
+                cfg.AddProfile<TransactionProfile>();
+                cfg.AddProfile<RecurringTransactionProfile>();
                 cfg.AddProfile<UserProfile>();
             });
 
@@ -131,9 +131,9 @@ namespace Fintor.api
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
             builder.Services.AddScoped<ICurrencyRepository, CurrencyRepository>();
-            builder.Services.AddScoped<IMovementRepository, MovementRepository>();
+            builder.Services.AddScoped<IMovementRepository, TransactionRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-            builder.Services.AddScoped<IRecurringMovementRepository, RecurringMovementRepository>();
+            builder.Services.AddScoped<IRecurringMovementRepository, RecurringTransactionRepository>();
 
 
             // Inyeccion de dependencias UseCases de User
@@ -147,17 +147,18 @@ namespace Fintor.api
             builder.Services.AddScoped<IDeleteAccount, DeleteAccount>();
             builder.Services.AddScoped<IGetAllAccounts, GetAllAccounts>();
 
-            // Inyeccion de dependencias UseCases de Movement
-            builder.Services.AddScoped<ICreateMovement, CreateMovement>();
-            builder.Services.AddScoped<IGetAccountMovements, GetAccountMovements>();
+            // Inyeccion de dependencias UseCases de Transaction
+            builder.Services.AddScoped<ICreateTransaction, CreateTransaction>();
+            builder.Services.AddScoped<IGetAccountMovements, GetAccountTransactions>();
 
             // Inyeccion de dependencias UseCases de Category
             builder.Services.AddScoped<ICreateCategory, CreateCategory>();
             builder.Services.AddScoped<IGetAllCategories, GetAllCategories>();
 
-            // Inyeccion de dependencias UseCases de RecurringMovement
-            builder.Services.AddScoped<IGenerateRecurringMovements, GenerateRecurringMovements>();
-            builder.Services.AddScoped<ICreateRecurringMovement, CreateRecurringMovement>();
+            // Inyeccion de dependencias UseCases de RecurringTransaction
+            builder.Services.AddScoped<IGenerateRecurringMovements, GenerateRecurringTransaction>();
+            builder.Services.AddScoped<ICreateRecurringMovement, CreateRecurringTransaction>();
+            builder.Services.AddScoped<IGetAccountRecurringMovements, GetAccountRecurringTransactions>();
 
 
             //Inyeccion de dependencias Services

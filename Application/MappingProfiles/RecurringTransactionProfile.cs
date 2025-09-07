@@ -1,5 +1,5 @@
 ﻿using Application.DTOs.Accounts;
-using Application.DTOs.Movements;
+using Application.DTOs.RecurringTransactions;
 using AutoMapper;
 using Domain.Entities;
 using System;
@@ -10,11 +10,10 @@ using System.Threading.Tasks;
 
 namespace Application.MappingProfiles
 {
-    public class MovementProfile : Profile
+    public class RecurringTransactionProfile : Profile
     {
-        public MovementProfile()
-        {
-            CreateMap<Movement, MovementDTO>();
+        public RecurringTransactionProfile() {
+            CreateMap<RecurringTransaction, RecurringTransactionDTO>();
         }
     }
 }

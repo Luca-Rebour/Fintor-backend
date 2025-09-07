@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using Fintor.api.Exceptions;
 using System.Security.Authentication;
+using Domain.Exceptions;
 
 namespace Api.Middlewares
 {

@@ -1,5 +1,5 @@
 ﻿using Application.DTOs.Categories;
-using Application.DTOs.Movements;
+using Application.DTOs.Transactions;
 using Application.Interfaces.UseCases.Categories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

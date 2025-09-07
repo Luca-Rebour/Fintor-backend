@@ -9,7 +9,7 @@ namespace Application.Interfaces.Repositories
 {
     public interface IMovementRepository
     {
-        Task<Movement> CreateMovementAsync(Movement movement);
-        Task<List<Movement>> GetAccountMovementsAsync(Guid accountId);
+        Task<Transaction> CreateMovementAsync(Transaction movement);
+        Task<List<Transaction>> GetAccountMovementsAsync(Guid accountId);
     }
 }

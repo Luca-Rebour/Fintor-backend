@@ -9,24 +9,24 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
-    public class MovementRepository : IMovementRepository
+    public class TransactionRepository : IMovementRepository
     {
         private readonly FintorDbContext _context;
-        public MovementRepository(FintorDbContext context)
+        public TransactionRepository(FintorDbContext context)
         {
             _context = context;
         }
 
-        public async Task<Movement> CreateMovementAsync(Movement movement)
+        public async Task<Transaction> CreateMovementAsync(Transaction movement)
         {
-            _context.Movements.Add(movement);
+            _context.Transactions.Add(movement);
             await _context.SaveChangesAsync();
             return movement;
         }
 
-        public async Task<List<Movement>> GetAccountMovementsAsync(Guid accountId)
+        public async Task<List<Transaction>> GetAccountMovementsAsync(Guid accountId)
         {
-            return await _context.Movements
+            return await _context.Transactions
                 .Where(m => m.AccountId == accountId)
                 .Include(m => m.Category)
                 .ToListAsync();

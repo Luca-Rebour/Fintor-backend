@@ -6,18 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.DTOs.Movements
+namespace Application.DTOs.Transactions
 {
-    public class MovementDTO
+    public class TransactionDTO
     {
         public Guid Id { get; set; }
         public decimal Amount { get; set; }
         public string Description { get; set; }
         public DateTime Date { get; set; }
-        public MovementType MovementType { get; set; }
-        public RecurringMovement? RecurringMovement { get; set; }
+        public TransactionType MovementType { get; set; }
+        public RecurringTransaction? RecurringTransaction { get; set; }
         public Category Category { get; set; }
-        public MovementDTO()
+        public TransactionDTO()
         {
 
         }

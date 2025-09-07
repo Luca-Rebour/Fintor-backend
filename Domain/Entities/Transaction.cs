@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Movement
+    public class Transaction
     {
         public Guid Id { get; private set; }
         public Guid AccountId { get; private set; }
@@ -16,17 +16,17 @@ namespace Domain.Entities
         public decimal Amount { get; private set; }
         public string Description { get; private set; }
         public DateTime Date { get; private set; }
-        public MovementType MovementType { get; private set; }
+        public TransactionType MovementType { get; private set; }
         public Account Account { get; private set; } = null!;
         public Category Category { get; private set; } = null!;
-        public RecurringMovement? RecurringMovement { get; private set; }
+        public RecurringTransaction? RecurringTransaction { get; private set; }
 
 
-        public Movement()
+        public Transaction()
         {
 
         }
-        public Movement(Guid accountId, Guid? recurringMovementId, Guid categoryId, decimal amount, string description, MovementType movementType)
+        public Transaction(Guid accountId, Guid? recurringMovementId, Guid categoryId, decimal amount, string description, TransactionType movementType)
         {
             Id = Guid.NewGuid();
             AccountId = accountId;
@@ -40,7 +40,7 @@ namespace Domain.Entities
 
         public bool IsIncome()
         {
-            if (MovementType == MovementType.Income)
+            if (MovementType == TransactionType.Income)
             {
                 return true;
             }
@@ -49,7 +49,7 @@ namespace Domain.Entities
 
         public bool IsExpense()
         {
-            if (MovementType == MovementType.Expense)
+            if (MovementType == TransactionType.Expense)
             {
                 return true;
             }
