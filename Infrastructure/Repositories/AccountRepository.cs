@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.Repositories;
+﻿using Application.DTOs.Categories;
+using Application.Interfaces.Repositories;
 using Domain.Entities;
 using Domain.Exceptions;
 using Microsoft.EntityFrameworkCore;
@@ -46,7 +47,6 @@ namespace Infrastructure.Repositories
                 .OrderBy(a => a.Name)
                 .ToListAsync();
         }
-
 
     }
 }

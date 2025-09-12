@@ -26,6 +26,8 @@ using Application.UseCases.Categories;
 using Application.Interfaces.Common;
 using Application.Interfaces.UseCases.RecurringTransactions;
 using Application.UseCases.RecurringTransactions;
+using Application.Interfaces.UseCases.Reports;
+using Application.UseCases.Reports;
 
 
 namespace Fintor.api
@@ -154,6 +156,10 @@ namespace Fintor.api
             // Inyeccion de dependencias UseCases de Category
             builder.Services.AddScoped<ICreateCategory, CreateCategory>();
             builder.Services.AddScoped<IGetAllCategories, GetAllCategories>();
+
+
+            // Inyeccion de dependencias UseCases de Report
+            builder.Services.AddScoped<IGetOverviewResponse, GetOverviewResponse>();
 
             // Inyeccion de dependencias UseCases de RecurringTransaction
             builder.Services.AddScoped<IGenerateRecurringMovements, GenerateRecurringTransaction>();

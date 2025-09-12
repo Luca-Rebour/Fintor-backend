@@ -126,8 +126,18 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Fintor.api.Controllers.ReportController",
+    "Method": "getOverview",
+    "RelativePath": "api/reports/get-overview",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Fintor.api.Controllers.TransactionController",
-    "Method": "CreateMovementNEW",
+    "Method": "CreateTransaction",
     "RelativePath": "api/transactions/create",
     "HttpMethod": "POST",
     "IsController": true,

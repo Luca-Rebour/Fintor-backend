@@ -20,7 +20,7 @@ namespace Fintor.api.Controllers
 
         [HttpPost("create")]
         [Authorize]
-        public async Task<IActionResult> CreateMovementNEW([FromBody] CreateTransactionDTO createMovementDTO)
+        public async Task<IActionResult> CreateTransaction([FromBody] CreateTransactionDTO createMovementDTO)
         {
             TransactionDTO movementDto = await _createMovement.ExecuteAsync(createMovementDTO);
             return Ok(movementDto);

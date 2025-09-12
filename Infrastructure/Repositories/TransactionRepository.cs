@@ -1,5 +1,7 @@
-﻿using Application.Interfaces.Repositories;
+﻿using Application.DTOs.Categories;
+using Application.Interfaces.Repositories;
 using Domain.Entities;
+using Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -30,6 +32,63 @@ namespace Infrastructure.Repositories
                 .Where(m => m.AccountId == accountId)
                 .Include(m => m.Category)
                 .ToListAsync();
+        }
+
+        public async Task<List<CategorySummaryDto>> GetCategorySpending(Guid userId)
+        {
+            var sql = @"
+        SELECT 
+            t.CategoryId,
+            c.Name as CategoryName,
+            SUM(t.Amount) as Total
+        FROM Transactions t
+        INNER JOIN Accounts a ON t.AccountId = a.Id
+        INNER JOIN Categories c ON t.CategoryId = c.Id
+        WHERE t.MovementType = 1 
+        AND a.UserId = {0}
+        GROUP BY t.CategoryId, c.Name
+        ORDER BY SUM(t.Amount) DESC";
+
+            return await _context.Database
+                .SqlQueryRaw<CategorySummaryDto>(sql, userId)
+                .ToListAsync();
+        }
+
+        public async Task<List<CategorySummaryDto>> GetCategoryEarning(Guid userId)
+        {
+            var sql = @"
+        SELECT 
+            t.CategoryId,
+            c.Name as CategoryName,
+            SUM(t.Amount) as Total
+        FROM Transactions t
+        INNER JOIN Accounts a ON t.AccountId = a.Id
+        INNER JOIN Categories c ON t.CategoryId = c.Id
+        WHERE t.MovementType = 0 
+        AND a.UserId = {0}
+        GROUP BY t.CategoryId, c.Name
+        ORDER BY SUM(t.Amount) DESC";
+
+            return await _context.Database
+                .SqlQueryRaw<CategorySummaryDto>(sql, userId)
+                .ToListAsync();
+        }
+
+        public async Task<decimal> GetTotalExpense(Guid userId)
+        {
+            return await _context.Transactions
+                    .Where(t => t.MovementType == TransactionType.Expense
+                             && t.Account.UserId == userId)
+                    .SumAsync(t => t.Amount);
+        }
+
+        public async Task<decimal> GetTotalIncome(Guid userId)
+        {
+            return await _context.Transactions
+                    .Where(t => t.MovementType == TransactionType.Income
+                             && t.Account.UserId == userId)
+                    .SumAsync(t => t.Amount);
+
         }
     }
 }
